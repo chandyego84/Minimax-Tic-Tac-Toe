@@ -1,0 +1,3 @@
+# Olivia
+Tic-Tac-Toe in Python, C, Verilog/FPGA, and maybe assembly...  
+Named after my dyanmic love for Olivia Rodrigo.
