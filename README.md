@@ -1,3 +1,3 @@
 # Olivia
 Tic-Tac-Toe in Python, C, Verilog/FPGA, and maybe assembly...  
-Named after my dyanmic love for Olivia Rodrigo.
+Because in order to appreciate the ethereal Olivia Rodrigo, you need to appreciate the high-level of Python. To appreciate Python you need to appreciate C. To appreciate C you need to appreciate Assembly and dig into the trenches of a HDL.
