@@ -35,7 +35,21 @@ def main():
     #print(z)
 
     # shape and size of an array
+    #a = np.array([[np.arange(5), np.arange(5, 10)],
+                    #[np.arange(10, 15), np.arange(15, 20)]])
+    #print(a)
+    #print(a.ndim)
+    #print(a.size)
+    #print(a.shape) # 3D: 2x2x5 == (2, 2, 5)
+
+    #b = np.arange(6)
+    #print(b)
+    #print(b.reshape(2, 3)) # turn to have 2 rows, 3 columns
+    #print(np.reshape(b, newshape=(2, 3)))
+
+    # convert 1D array to 2D array (add new axis to array)
     
+
 
 
     print("I am a numpy noob")
