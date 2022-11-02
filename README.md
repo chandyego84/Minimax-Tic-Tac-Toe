@@ -5,6 +5,9 @@ Because in order to appreciate the ethereal Olivia Rodrigo, you need to apprecia
 ## Running the Games:
 
 ## TODO:
+- Write tests
+- Check efficiency across the languages
+- Add MORE languages!
 ### Python Implementation
 1. Make GUI version
 2. Minimax: use second evaluation function cited, optimize minimax algo
