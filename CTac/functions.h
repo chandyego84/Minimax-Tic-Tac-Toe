@@ -52,6 +52,7 @@ bool IsWinner(int board[], int player) {
         if (player == board[i*3] == board[i*3+1] == board[i*3+2]) {
             return true;
         }
+        
         // vertical
         if (player == board[i] == board[i+3] == board[i+6]) {
             return true;
@@ -104,39 +105,51 @@ int Evaluate(int board[]) {
 
 // minimax implementation
 // INITIAL CALL: Minimax(board, 1). AI is maximizing player.
-int Minimax(int board[], int maximizingPlayer) {
+int* Minimax(int board[], int maximizingPlayer) {
+    int out[2] = {0, 0}; // score and position to play
+
     // terminal node
-    if (IsTerminatingNode(board)) {
-        return Evaluate(board); // return score of game state
+    if (IsTerminatingNode(board) == true) {
+        out[0] = Evaluate(board);
+        out[1] = -1;
+        return out; // return score of game state, won't return a position
     }
 
     if (maximizingPlayer) {
         int maxValue, value = -1000;
+        int pos = 0;
         for (int p=0; p<SIZE; p++) {
             if (IsLegalMove(board, p)) {
                 Step(board, p, maximizingPlayer);
-                value = Minimax(board, -maximizingPlayer);
+                value = Minimax(board, -maximizingPlayer)[0];
                 board[p] = 0; // undo the move
                 if (value > maxValue) {
                     maxValue = value;
+                    pos = p;
                 }
             }
         }
-        return maxValue;
+        out[0] = maxValue;
+        out[1] = pos;
+        return out;
     }
 
     else {
         int minValue, value = 1000;
+        int pos = 0;
         for (int p=0; p<SIZE; p++) {
             if (IsLegalMove(board, p)) {
                 Step(board, p, maximizingPlayer);
-                value = Minimax(board, -maximizingPlayer);
+                value = Minimax(board, -maximizingPlayer)[0];
                 board[p] = 0; // undo the move
                 if (value < minValue) {
                     minValue = value;
+                    pos = p;
                 }
             }
         }
-        return minValue;
+        out[0] = minValue;
+        out[1] = pos;
+        return out;
     }
 }
