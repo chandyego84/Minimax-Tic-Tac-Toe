@@ -83,7 +83,7 @@ bool IsDraw(int board[]) {
 
 // is terminating node?: 
 // win or draw in game state
-bool IsTerminatingNode(int board[], int pos) {
+bool IsTerminatingNode(int board[]) {
     return IsWinner(board, -1) || IsWinner(board, 1) || IsDraw(board);
 }
 
@@ -102,4 +102,41 @@ int Evaluate(int board[]) {
     return 0;
 }
 
-// minimax algo
+// minimax implementation
+// INITIAL CALL: Minimax(board, 1). AI is maximizing player.
+int Minimax(int board[], int maximizingPlayer) {
+    // terminal node
+    if (IsTerminatingNode(board)) {
+        return Evaluate(board); // return score of game state
+    }
+
+    if (maximizingPlayer) {
+        int maxValue, value = -1000;
+        for (int p=0; p<SIZE; p++) {
+            if (IsLegalMove(board, p)) {
+                Step(board, p, maximizingPlayer);
+                value = Minimax(board, -maximizingPlayer);
+                board[p] = 0; // undo the move
+                if (value > maxValue) {
+                    maxValue = value;
+                }
+            }
+        }
+        return maxValue;
+    }
+
+    else {
+        int minValue, value = 1000;
+        for (int p=0; p<SIZE; p++) {
+            if (IsLegalMove(board, p)) {
+                Step(board, p, maximizingPlayer);
+                value = Minimax(board, -maximizingPlayer);
+                board[p] = 0; // undo the move
+                if (value < minValue) {
+                    minValue = value;
+                }
+            }
+        }
+        return minValue;
+    }
+}
