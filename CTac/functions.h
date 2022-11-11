@@ -71,8 +71,35 @@ bool IsWinner(int board[], int player) {
     return false;
 }
 
-// is terminating node?
+bool IsDraw(int board[]) {
+    for (int i=0; i<SIZE; i++) {
+        if (board[i] == 0) {
+            return false;
+        }
+    }
 
-// evaluation function
+    return true;
+}
+
+// is terminating node?: 
+// win or draw in game state
+bool IsTerminatingNode(int board[], int pos) {
+    return IsWinner(board, -1) || IsWinner(board, 1) || IsDraw(board);
+}
+
+// evaluation function:
+// AI wins --> 100 pts, AI loses --> -100 pts, otherwise --> 0 pts
+int Evaluate(int board[]) {
+    if (IsWinner(board, 1)) {
+        // AI won
+        return 100;
+    }
+    else if (IsWinner(board, -1)) {
+        // AI lost
+        return -100;
+    }
+
+    return 0;
+}
 
 // minimax algo
