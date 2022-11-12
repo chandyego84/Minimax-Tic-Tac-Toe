@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
+#include <math.h>
 
 // board
 #define SIZE 9
@@ -49,22 +51,30 @@ void Step(int board[], int pos, int player) {
 bool IsWinner(int board[], int player) {
     for (int i=0; i < 3; i++) {
         // horizontal
-        if (player == board[i*3] == board[i*3+1] == board[i*3+2]) {
+        if (player == board[i*3] && 
+            player == board[i*3+1] &&
+            player == board[i*3+2]) {
             return true;
         }
         
         // vertical
-        if (player == board[i] == board[i+3] == board[i+6]) {
+        if (player == board[i] &&
+            player == board[i+3] &&
+            player == board[i+6]) {
             return true;
         }
 
         // negative slope diagonal
-        if (player == board[0] == board[4] == board[8]) {
+        if (player == board[0] &&
+            player == board[4] &&
+            player == board[8]) {
             return true;
         }
 
         // positive slope diagonal
-        if (player == board[2] == board[4] == board[6]) {
+        if (player == board[2] &&
+            player == board[4] &&
+            player == board[6]) {
             return true;
         }
     }
@@ -106,7 +116,8 @@ int Evaluate(int board[]) {
 // minimax implementation
 // INITIAL CALL: Minimax(board, 1). AI is maximizing player.
 int* Minimax(int board[], int maximizingPlayer) {
-    int out[2] = {0, 0}; // score and position to play
+    //int out[2] = {0, 0}; // score and position to play
+    int* out = (int*)malloc(sizeof(int) * 2);
 
     // terminal node
     if (IsTerminatingNode(board) == true) {
@@ -115,13 +126,13 @@ int* Minimax(int board[], int maximizingPlayer) {
         return out; // return score of game state, won't return a position
     }
 
-    if (maximizingPlayer) {
-        int maxValue, value = -1000;
+    if (maximizingPlayer == 1) { // AI turn
+        int maxValue = -INFINITY;
         int pos = 0;
         for (int p=0; p<SIZE; p++) {
             if (IsLegalMove(board, p)) {
-                Step(board, p, maximizingPlayer);
-                value = Minimax(board, -maximizingPlayer)[0];
+                Step(board, p, 1);
+                int value = Minimax(board, -1)[0];
                 board[p] = 0; // undo the move
                 if (value > maxValue) {
                     maxValue = value;
@@ -135,12 +146,12 @@ int* Minimax(int board[], int maximizingPlayer) {
     }
 
     else {
-        int minValue, value = 1000;
+        int minValue = INFINITY;
         int pos = 0;
         for (int p=0; p<SIZE; p++) {
             if (IsLegalMove(board, p)) {
-                Step(board, p, maximizingPlayer);
-                value = Minimax(board, -maximizingPlayer)[0];
+                Step(board, p, -1);
+                int value = Minimax(board, 1)[0];
                 board[p] = 0; // undo the move
                 if (value < minValue) {
                     minValue = value;
