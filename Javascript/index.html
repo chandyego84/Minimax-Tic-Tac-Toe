@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<head>
+	<meta name="viewport" content=
+		"width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div id="main">
+		<h1>TIC TAC TOE IN JAVASCRIPT</h1>
+		<!-- Game Instructions -->
+		<p id="ins">Implementation of Minimax Algorithm<br><br>
+            Player starts as
+			<b>Player X</b><br>And<br>AI
+			Player as <b>Player O</b>
+		</p>
+		<br><br>
+		<div class="board" id="board">
+			<div class='cell' data-cell='0'>N</div>
+			<div class="cell" data-cell='1'>N</div>
+			<div class="cell" data-cell='2'>N</div>
+			<div class="cell" data-cell='3'>N</div>
+			<div class="cell" data-cell='4'>N</div>
+			<div class="cell" data-cell='5'>N</div>
+			<div class="cell" data-cell='6'>N</div>
+			<div class="cell" data-cell='7'>N</div>
+			<div class="cell" data-cell='8'>N</div>	
+		</div>
+		<!-- Grid end here -->
+		<br><br><br>
+		<!-- Button to reset game -->
+		<button id="but" onclick="myfunc_2()">
+			RESET
+		</button>
+
+		<br><br>
+		<!-- Space to show player turn -->
+		<p id="print"></p>
+
+	</div>
+	<script src="script.js"></script>
+</body>
+
+</html>
