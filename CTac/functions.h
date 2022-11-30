@@ -127,7 +127,7 @@ int* Minimax(int board[], int maximizingPlayer) {
     }
 
     if (maximizingPlayer == 1) { // AI turn
-        int maxValue = -INFINITY;
+        float maxValue = -INFINITY;
         int pos = 0;
         for (int p=0; p<SIZE; p++) {
             if (IsLegalMove(board, p)) {
@@ -146,7 +146,7 @@ int* Minimax(int board[], int maximizingPlayer) {
     }
 
     else {
-        int minValue = INFINITY;
+        float minValue = INFINITY;
         int pos = 0;
         for (int p=0; p<SIZE; p++) {
             if (IsLegalMove(board, p)) {
