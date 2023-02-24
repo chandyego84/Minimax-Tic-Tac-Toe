@@ -3,4 +3,3 @@ module board(clk, rst, clr, en_player, en_cpu, selectPlayer[8:0], selectCPU[8:0]
 
 input clk, rst, clr;
 
-
