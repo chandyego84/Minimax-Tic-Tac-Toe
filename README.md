@@ -1,6 +1,4 @@
-# Olivia
-Why the name Olivia? Because I love Olivia Rodrigo and am trying to 
-write Tic-Tac-Toe in as many ways as I love her.  
+# Knoughts and Crosses
 
 Tic-Tac-Toe vs. AI in Python, C, Verilog...  
 
